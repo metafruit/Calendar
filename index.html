@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f2ea" />
+    <title>Head Games Hair Salon</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-label="Calendar controls">
+        <div>
+          <p class="eyebrow">Head Games Hair Salon</p>
+          <h1 id="weekTitle">Your Week</h1>
+        </div>
+        <button class="icon-button" id="newEventTopButton" type="button" aria-label="New event" hidden>
+          <span aria-hidden="true">+</span>
+        </button>
+      </section>
+
+      <section class="account-panel" aria-label="Google account">
+        <div>
+          <p class="account-kicker" id="authStatus">Demo mode</p>
+          <p class="account-name" id="accountName">Sign in with Google to manage appointments.</p>
+        </div>
+        <div class="account-actions">
+          <a class="primary-link" id="signInLink" href="/auth/google">Sign in</a>
+          <button class="ghost-button compact" id="signOutButton" type="button" hidden>Sign out</button>
+          <button class="primary-button compact" id="newEventButton" type="button" hidden>New</button>
+        </div>
+      </section>
+
+      <section class="week-strip" aria-label="Week navigation">
+        <button class="nav-button" id="prevWeek" type="button" aria-label="Previous week">‹</button>
+        <p class="week-range" id="weekRange"></p>
+        <button class="nav-button" id="nextWeek" type="button" aria-label="Next week">›</button>
+      </section>
+
+      <section class="week-picker" id="weekPicker" aria-label="Choose a day"></section>
+
+      <section class="day-schedule" id="daySchedule" aria-label="Hourly schedule"></section>
+
+      <section class="agenda" aria-label="Upcoming events">
+        <div class="section-heading">
+          <h2>Agenda</h2>
+          <p id="agendaMeta">Sample events</p>
+        </div>
+        <div class="agenda-list" id="agendaList"></div>
+      </section>
+    </main>
+
+    <section class="event-sheet" id="eventSheet" aria-label="New event" hidden>
+      <form class="event-form" id="eventForm">
+        <div class="sheet-heading">
+          <div>
+            <p class="account-kicker">Google Calendar</p>
+            <h2>New event</h2>
+          </div>
+          <button class="icon-button small" id="closeEventSheet" type="button" aria-label="Close">×</button>
+        </div>
+
+        <label class="field">
+          <span>Title</span>
+          <input id="eventTitle" name="title" autocomplete="off" required />
+        </label>
+
+        <label class="field inline-field">
+          <input id="eventAllDay" name="allDay" type="checkbox" />
+          <span>All day</span>
+        </label>
+
+        <div class="form-grid" id="timedFields">
+          <label class="field">
+            <span>Start</span>
+            <input id="eventStart" name="start" type="datetime-local" required />
+          </label>
+          <label class="field">
+            <span>End</span>
+            <input id="eventEnd" name="end" type="datetime-local" required />
+          </label>
+        </div>
+
+        <label class="field" id="allDayField" hidden>
+          <span>Date</span>
+          <input id="eventDate" name="date" type="date" />
+        </label>
+
+        <label class="field">
+          <span>Location</span>
+          <input id="eventLocation" name="location" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>Notes</span>
+          <textarea id="eventDescription" name="description" rows="3"></textarea>
+        </label>
+
+        <p class="form-status" id="eventFormStatus"></p>
+
+        <div class="settings-actions">
+          <button class="primary-button" id="saveEventButton" type="submit">Save to Google</button>
+          <button class="ghost-button" id="cancelEventButton" type="button">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <template id="dayTemplate">
+      <button class="day-pill" type="button">
+        <span class="weekday-label"></span>
+        <span class="day-number"></span>
+        <span class="event-dots"></span>
+      </button>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
